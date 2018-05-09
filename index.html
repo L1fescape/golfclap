@@ -10,26 +10,31 @@
       overflow: hidden;
       width: 100%;
       height: 100%;
-      position: relative;
     }
     #clap {
-      position: absolute;
-      background: white;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 10em;
+      font-size: 7em;
+    }
+    .emoji:hover {
+      cursor: pointer;
+    }
+    .emoji:active {
+      padding-top: 5px;
+      user-select: none;
     }
   </style>
 </head>
 <body>
-  <iframe id="video" src="//www.youtube.com/embed/NAEA1KzDynI?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe>
+  <audio id="golfclap-player" autoplay>
+    <source src="golfclap.mp3" />
+  </audio>
   <div id="clap">
-    <div class="emoji">👏</div>
+    <div onclick="playClap()" class="emoji">👏</div>
   </div>
+  <script>
+    const playClap = () => document.getElementById("golfclap-player").play()
+  </script>
 </body>
 </html>
