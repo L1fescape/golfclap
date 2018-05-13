@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Golf clap as a service 👏</title>
   <style>
-    html, body, #clap {
+    html, body, .container {
       padding: 0;
       margin: 0;
       overflow: hidden;
@@ -12,7 +12,7 @@
       height: 100%;
       background-color: #a735ff;
     }
-    #clap {
+    .container {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -26,13 +26,16 @@
       user-select: none;
     }
   </style>
+  <script src="//twemoji.maxcdn.com/2/twemoji.min.js?2.6"></script>
 </head>
 <body>
   <audio id="golfclap-player" autoplay>
     <source src="golfclap.mp3" />
   </audio>
-  <div id="clap">
-    <div onclick="playClap()" class="emoji">👏</div>
+  <div class="container">
+    <div onclick="playClap()" class="emoji">
+      <img alt="👏" src="data:image/png;base64,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"/>
+    </div>
   </div>
   <script>
     const player = document.getElementById("golfclap-player")
